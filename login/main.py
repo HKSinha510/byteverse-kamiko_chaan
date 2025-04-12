@@ -26,7 +26,7 @@ class LoginForm(QDialog):
 
 
         if user == "" and password == "":
-            QMessageBox.warning(self, "No data", "Please fill the data")
+            pass
         
         else: 
             if user == "":
