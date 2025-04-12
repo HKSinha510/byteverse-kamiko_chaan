@@ -20,7 +20,13 @@ class LoginForm(QDialog):
     def login(self):
         email = self.ui.email_input.text()
         password = self.ui.password_input.text()
-        
+
+
+        QMessageBox.information(self, "Success", "Login successful!")
+            
+            # Close the login window
+        self.accept()
+        """
         # Add your authentication logic here
         # This is a simple example - you'd typically check against a database
         if email == "admin@example.com" and password == "password123":
@@ -28,7 +34,7 @@ class LoginForm(QDialog):
             # Here you could close this dialog and open your main application
             # self.accept()  # This will close the dialog with an "accept" result
         else:
-            QMessageBox.warning(self, "Login Failed", "Invalid email or password!")
+            QMessageBox.warning(self, "Login Failed", "Invalid email or password!")"""
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
