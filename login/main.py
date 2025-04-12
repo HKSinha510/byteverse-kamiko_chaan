@@ -55,13 +55,15 @@ class LoginForm(QDialog):
                 else:
                     if password == d["password"]:
                         QMessageBox.information(self, "Succesfull", "Login Succesfull!")
-                        self.accept()
+                        
                         if user[0] == 'S':
                             #open student dashboard
+                            pass
 
-                            
-                        else user[0] == 'T':
+
+                        if user[0] == 'T':
                             #open teacher dashboard
+                            pass
 
                     else:
                         QMessageBox.warning(self, "Incorrect Password", "Incorrect Password")
