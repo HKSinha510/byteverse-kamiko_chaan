@@ -1,7 +1,20 @@
+#Kamiko_chaan
+#todo:
+#1. add forget password button
+#2. enable register button
+#3. add border if any field is empty
+
+
 import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from PySide6.QtWidgets import QApplication, QDialog, QMessageBox
 from login_ui import Ui_Dialog  # Import the UI class we generated
-from db import MongoConnection
+from dbms.mongo import MongoConnection
+
+con = MongoConnection("mydb")
+users = con.get_collection("users")
 
 
 class LoginForm(QDialog):
@@ -33,13 +46,27 @@ class LoginForm(QDialog):
                 QMessageBox.warning(self, "User not Found", "Please enter Username")
             if password == "":
                 QMessageBox.warning(self, "Invalid Password", "Please enter Password")
+
+            if user != "" and password != "":
+                d = users.find_one({"username": user})
+                if d == None:
+                    QMessageBox.warning(self, "User not found", "user not found")
+
+                else:
+                    if password == d["password"]:
+                        QMessageBox.information(self, "Succesfull", "Login Succesfull!")
+                        self.accept()
+
+                    else:
+                        QMessageBox.warning(self, "Incorrect Password", "Incorrect Password")
+
+
         #todo: change border color
 
-
-        QMessageBox.information(self, "Success", "Login successful!")
+        #QMessageBox.information(self, "Success", "Login successful!")
             
             # Close the login window
-        self.accept()
+        #self.accept()
         """
         # Add your authentication logic here
         # This is a simple example - you'd typically check against a database
@@ -50,6 +77,8 @@ class LoginForm(QDialog):
         else:
             QMessageBox.warning(self, "Login Failed", "Invalid email or password!")"""
         
+    def register(self):
+        pass
 
 
 if __name__ == "__main__":

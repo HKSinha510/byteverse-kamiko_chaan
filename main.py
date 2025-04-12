@@ -1,4 +1,4 @@
-from db import MongoConnection
+from dbms.mongo import MongoConnection
 import os
-
-os.system("python ./login/main.py")
+d = MongoConnection("mydb")
+#os.system("python ./login/main.py")
