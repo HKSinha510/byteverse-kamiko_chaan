@@ -60,6 +60,7 @@ class LoginForm(QDialog):
 
                         ## save current user 
                         with open("dbms/currentuser.json", 'w') as f:
+                            d.pop('_id', None)
                             json.dump(d, f, indent=4)
 
                         ##
