@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow
-from teach import Ui_MainWindow
+from teacher.teacher_ui import Ui_MainWindow
 
 class TeacherDash(QMainWindow):  # Change from QDialog to QMainWindow
     def __init__(self):

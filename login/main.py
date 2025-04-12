@@ -4,13 +4,14 @@
 #2. enable register button
 #3. add border if any field is empty
 
-
-import sys
-import os
+import os, sys, json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from PySide6.QtWidgets import QApplication, QDialog, QMessageBox
 from login_ui import Ui_Dialog  # Import the UI class we generated
+from student.main import StudentDash
+from teacher.main import TeacherDash
+
 from dbms.mongo import MongoConnection
 
 con = MongoConnection("mydb")
@@ -55,15 +56,21 @@ class LoginForm(QDialog):
                 else:
                     if password == d["password"]:
                         QMessageBox.information(self, "Succesfull", "Login Succesfull!")
+                        self.accept()
+
+                        ## save current user 
+                        with open("dbms/currentuser.json", 'w') as f:
+                            json.dump(d, f, indent=4)
+
+                        ##
                         
-                        if user[0] == 'S':
-                            #open student dashboard
-                            pass
+                        if user.startswith("S"):
+                            self.dashboard = StudentDash()
 
+                        elif user.startswith("T"):
+                            self.dashboard = TeacherDash()
 
-                        if user[0] == 'T':
-                            #open teacher dashboard
-                            pass
+                        self.dashboard.show()
 
                     else:
                         QMessageBox.warning(self, "Incorrect Password", "Incorrect Password")

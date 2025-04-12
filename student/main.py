@@ -1,19 +1,19 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow
-from student import Ui_MainWindow
+from student.student_ui import Ui_MainWindow
 
-class TeacherDash(QMainWindow):  # Change from QDialog to QMainWindow
+class StudentDash(QMainWindow):  # Change from QDialog to QMainWindow
     def __init__(self):
-        super(TeacherDash, self).__init__()
+        super(StudentDash, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         
         # Set window title
-        self.setWindowTitle("Teacher Dashboard")        
+        self.setWindowTitle("Student Dashboard")        
     
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    widget = TeacherDash()
+    widget = StudentDash()
     widget.show()
     sys.exit(app.exec())
