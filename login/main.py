@@ -38,7 +38,6 @@ class LoginForm(QDialog):
         user = self.ui.user_input.text()
         password = self.ui.password_input.text()
 
-
         if user == "" and password == "":
             pass
         
@@ -55,7 +54,7 @@ class LoginForm(QDialog):
 
                 else:
                     if password == d["password"]:
-                        QMessageBox.information(self, "Succesfull", "Login Succesfull!")
+                        QMessageBox.information(self, "Successful", "Login Successful!")
                         self.accept()
 
                         ## save current user 
@@ -66,8 +65,7 @@ class LoginForm(QDialog):
                         ##
                         
                         if user.startswith("S"):
-                            self.dashboard = StudentDash()
-
+                            self.dashboard = StudentDash(user)  # Pass username to StudentDash
                         elif user.startswith("T"):
                             self.dashboard = TeacherDash()
 
@@ -75,23 +73,6 @@ class LoginForm(QDialog):
 
                     else:
                         QMessageBox.warning(self, "Incorrect Password", "Incorrect Password")
-
-
-        #todo: change border color
-
-        #QMessageBox.information(self, "Success", "Login successful!")
-            
-            # Close the login window
-        #self.accept()
-        """
-        # Add your authentication logic here
-        # This is a simple example - you'd typically check against a database
-        if email == "admin@example.com" and password == "password123":
-            QMessageBox.information(self, "Login Successful", "Welcome!")
-            # Here you could close this dialog and open your main application
-            # self.accept()  # This will close the dialog with an "accept" result
-        else:
-            QMessageBox.warning(self, "Login Failed", "Invalid email or password!")"""
         
     def register(self):
         pass
