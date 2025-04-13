@@ -15,7 +15,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication,QCheckBox, QFrame, QLineEdit, QListWidget,
+from PySide6.QtWidgets import (QApplication,QCheckBox, QFrame, QLabel, QLineEdit, QListWidget,
     QListWidgetItem, QMainWindow, QMenuBar, QPushButton,
     QScrollArea, QScrollBar, QSizePolicy, QStackedWidget,
     QStatusBar, QTabWidget, QTextEdit, QWidget)
@@ -27,6 +27,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+
+        #FRAME 1
         self.header = QFrame(self.centralwidget)
         self.header.setObjectName(u"header")
         self.header.setGeometry(QRect(0, 0, 781, 91))
@@ -48,6 +50,8 @@ class Ui_MainWindow(object):
         self.Class_info = QTextEdit(self.header)
         self.Class_info.setObjectName(u"Class_info")
         self.Class_info.setGeometry(QRect(540, 10, 231, 64))
+
+        ##FRAME 2
         self.messagearea = QFrame(self.centralwidget)
         self.messagearea.setObjectName(u"messagearea")
         self.messagearea.setGeometry(QRect(0, 90, 561, 381))
@@ -70,6 +74,8 @@ class Ui_MainWindow(object):
         self.messagedisplay.setObjectName(u"messagedisplay")
         self.messagedisplay.setGeometry(QRect(0, 0, 541, 371))
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        #FRAME 3
         self.Messagebox = QFrame(self.centralwidget)
         self.Messagebox.setObjectName(u"Messagebox")
         self.Messagebox.setGeometry(QRect(0, 470, 561, 80))
@@ -83,6 +89,8 @@ class Ui_MainWindow(object):
         self.Sendbutton = QPushButton(self.Messagebox)
         self.Sendbutton.setObjectName(u"Sendbutton")
         self.Sendbutton.setGeometry(QRect(460, 30, 75, 24))
+
+        #FRAME 4(a)
         self.friendlist = QFrame(self.centralwidget)
         self.friendlist.setObjectName(u"friendlist")
         self.friendlist.setGeometry(QRect(560, 310, 221, 241))
@@ -99,19 +107,35 @@ class Ui_MainWindow(object):
         self.All_display = QListWidget(self.All)
         self.All_display.setObjectName(u"All_display")
         self.All_display.setGeometry(QRect(0, 0, 221, 191))
+        self.All_display.addItem("Alice")
+        self.All_display.addItem("Charlie")
+        self.All_display.addItem("BOB")
+        self.All_display.addItem("Max")
+        self.All_display.addItem("Mandy")
         self.tabWidget.addTab(self.All, "")
+
+        #FRAME 4(b)
         self.Online = QWidget()
         self.Online.setObjectName(u"Online")
         self.Online_display = QListWidget(self.Online)
         self.Online_display.setObjectName(u"Online_display")
         self.Online_display.setGeometry(QRect(0, 0, 221, 191))
+        self.Online_display.addItem("Alice")
+        self.Online_display.addItem("Charlie")
         self.tabWidget.addTab(self.Online, "")
+
+        #FRAME 4(c)
         self.Star = QWidget()
         self.Star.setObjectName(u"Star")
         self.star_display = QListWidget(self.Star)
         self.star_display.setObjectName(u"star_display")
         self.star_display.setGeometry(QRect(0, 0, 221, 191))
+        self.star_display.addItem("BOB")
+        self.star_display.addItem("Max")
+        self.star_display.addItem("Mandy")
         self.tabWidget.addTab(self.Star, "")
+
+        #FRAME 5
         self.ToDo_nextclass = QFrame(self.centralwidget)
         self.ToDo_nextclass.setObjectName(u"ToDo_nextclass")
         self.ToDo_nextclass.setGeometry(QRect(560, 90, 221, 221))
@@ -124,6 +148,8 @@ class Ui_MainWindow(object):
         self.stackedWidget.setGeometry(QRect(0, 10, 211, 201))
         self.stackedWidget.setStyleSheet(u"border-color: rgb(8, 3, 59);\n"
 "background-color: rgb(3, 1, 21);")
+        
+        #FRAME 5(a)
         self.TODO = QWidget()
         self.TODO.setObjectName(u"TODO")
         self.textEdit_3 = QTextEdit(self.TODO)
@@ -132,7 +158,13 @@ class Ui_MainWindow(object):
         self.listWidget_2 = QListWidget(self.TODO)
         self.listWidget_2.setObjectName(u"listWidget_2")
         self.listWidget_2.setGeometry(QRect(-10, 20, 221, 192))
+        # Add 3 todo items to the list - need to add functionaliuities
+        self.listWidget_2.addItem("1. Complete Assignment 3")
+        self.listWidget_2.addItem("2. Revise Chapter 4 for Math")
+        self.listWidget_2.addItem("3. Upload Lab Report")
         self.stackedWidget.addWidget(self.TODO)
+
+        #FRAME 5(b)
         self.Nextclass = QWidget()
         self.Nextclass.setObjectName(u"Nextclass")
         self.nextclass_title = QTextEdit(self.Nextclass)

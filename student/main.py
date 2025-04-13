@@ -32,7 +32,7 @@ class StudentDash(QMainWindow):  # Change from QDialog to QMainWindow
     def send_message(self):
     # Get the message text
 
-        message_text = self.ui.messageInputBox.toPlainText()  # For QTextEdit
+        message_text = self.ui.messagebox.toPlainText()  # For QTextEdit
         
         if message_text.strip():  #Check if message is not empty
             # Format message with username (simple version)
@@ -44,7 +44,7 @@ class StudentDash(QMainWindow):  # Change from QDialog to QMainWindow
             # self.ui.messageDisplay.addItem(formatted_message)  # For QListWidget
             
             # Clear the input box
-            self.ui.messageInputBox.clear()
+            self.ui.messagebox.clear()
             
             # Send to server (covered in network section)
             self.send_to_server(message_text)
